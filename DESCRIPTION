@@ -1,0 +1,14 @@
+Package: topotoolboxr
+Version: 0.0.1
+Date: 2024-05-14
+Title: First start at a package for Topotoolbox
+Authors@R: c(person("Domenic", "Bartha", role = c("developer","student"),
+                     email = "bartha1@uni-potsdam.de")))
+Author: Domenic Bartha [developer, student],
+  Pat Developer [aut],
+  A. User [ctb]
+Maintainer: Domenic Bartha <bartha1@uni-potsdam.de>
+Depends: R (>= 4.1.0), libtopotoolbox
+Description: this package provides functionalities for matrix manipulation for tiff data in geology
+License: GPL (>= 3)
+URL: https://github.com/TopoToolbox/topotoolboxr, https://github.com/TopoToolbox
