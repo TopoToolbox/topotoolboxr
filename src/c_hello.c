@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 const void hello(){
-	printf("hello world");
+	printf("hello world"); // writing to stdout is not allowed on cran therfore a note on check() and reference to 'Writing R Extensions'
 }
 
 #include <R_ext/Rdynload.h>
