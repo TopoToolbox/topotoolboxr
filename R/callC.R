@@ -1,3 +1,3 @@
 callC <- function(){
-.C("c_hello")
+.C("hello")
 }
