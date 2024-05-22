@@ -4,3 +4,4 @@
 .httr-oauth
 .DS_Store
 .quarto
+*/.DS_Store
