@@ -9,5 +9,5 @@
 #'
 #' @export
 callC <-function(){
-.C("hello")
+.C("test")
 }

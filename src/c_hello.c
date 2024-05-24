@@ -1,3 +1,5 @@
+// this was the first try and is an older version which still works if called directly through ".C("hello"). This works becaus it still gets regestrered. 
+// This uses bad naming conventions and everythins is unclear
 #include <stdio.h>
 
 const void hello(){
