@@ -4,9 +4,14 @@
 #include <Rinternals.h>
 #include <R_ext/Rdynload.h>
 #include "test.h"
+#include "EuclideanDistanceTransformation.h"
 
+static R_NativePrimitiveArgType myC_type[] = {
+   INTSXP,INTSXP,INTSXP,INTSXP
+};
 static const R_CMethodDef cMethods[] = {
    {"test",  (DL_FUNC) &test, 0},
+   {"EuclideanDistanceTransformation", (DL_FUNC) &EuclideanDistanceTransformation, 4,myC_type},
    NULL
 };
 
