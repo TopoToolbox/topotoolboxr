@@ -8,19 +8,11 @@
 #' callC()
 #'
 #' @export
-callC<-function(){
-	output <- matrix(0,5,5)
-	rows <- 5
-	cols <- 5
-	input <- matrix(c(
-		1,0,0,0,0,
-		0,1,1,1,0,
-		0,1,1,1,0,
-		0,1,1,1,0,
-		0,0,0,0,0
-	),5,5)
-	result_output <- .C("EuclideanDistanceTransformation",as.integer(input),as.integer(rows),as.integer(cols),as.integer(output))
-	print(result_output)
+callC<-function(binary_image,rows,cols,output){
+	rx <- matrix(0,rows,cols)
+	ry <- matrix(0,rows,cols)
+	result_output <- .C("EuclideanDistanceTransformation",as.integer(input),as.integer(rows),as.integer(cols),as.integer(output),as.integer(rx),as.integer(ry))
+	return(matrix(result_output[[4]],rows,cols,byrow=TRUE))
 }
 #call_test_C <-function(){
 #	.C("test")

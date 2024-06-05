@@ -4,7 +4,7 @@
 \alias{callC}
 \title{callC}
 \usage{
-callC()
+callC(binary_image, rows, cols, output)
 }
 \value{
 None
