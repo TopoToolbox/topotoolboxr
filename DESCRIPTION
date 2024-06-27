@@ -1,22 +1,15 @@
 Package: topotoolboxr
 Version: 0.0.1
-Date: 2024-05-14
-Title: First start at a package for Topotoolbox
+Title: R Interface to TopoToolbox
 Authors@R: c(person("Domenic", "Bartha", role = c("cre","aut"),
                      email = "bartha1@uni-potsdam.de"))
-Author: Domenic Bartha [developer, student]
 Maintainer: Domenic Bartha <bartha1@uni-potsdam.de>
 Depends: R (>= 4.1.0)
 License: GPL-3 + file LICENSE
-Description: ThisTopoToolBox provides a R interface for the know matlab toolbox on Github "wschwanghart/topotoolbox". It is for digital terrain analysis and landscape evolution modelling and provides c funktions to manipulate TIFF (Tagged Image File Format) files.
+Description: Topotoolboxr provides an R interface to TopoToolbox, a set of tools for digital terrain analysis and landscape evolution modeling.
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/TopoToolbox/topotoolboxr, https://github.com/TopoToolbox
-Remotes:
-	url::https://github.com/TopoToolbox/libtopotoolbox,
-	TopoToolbox/libtopotoolbox
-Imports:
-	remotes
 RoxygenNote: 7.3.1
 Suggests: 
     testthat (>= 3.0.0)
