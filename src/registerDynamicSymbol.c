@@ -3,16 +3,14 @@
 #include <R.h>
 #include <Rinternals.h>
 #include <R_ext/Rdynload.h>
-#include "test.h"
 #include "EuclideanDistanceTransformation.h"
 
 static R_NativePrimitiveArgType myC_type[] = {
    INTSXP,INTSXP,INTSXP,INTSXP,INTSXP,INTSXP
 };
 static const R_CMethodDef cMethods[] = {
-   {"test",  (DL_FUNC) &test, 0},
    {"EuclideanDistanceTransformation", (DL_FUNC) &EuclideanDistanceTransformation, 6,myC_type},
-   NULL
+   {NULL},
 };
 
 void R_init_topotoolboxr(DllInfo *info) {
