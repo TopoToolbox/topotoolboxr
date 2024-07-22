@@ -5,9 +5,6 @@
 #include <R_ext/Rdynload.h>
 #include "has_topotoolbox.h"
 
-static R_NativePrimitiveArgType myC_type[] = {
-   INTSXP,INTSXP,INTSXP,INTSXP,INTSXP,INTSXP
-};
 static const R_CMethodDef cMethods[] = {
    {"has_topotoolbox", (DL_FUNC) &has_topotoolbox,0},
    {NULL},
