@@ -3,13 +3,13 @@
 #include <R.h>
 #include <Rinternals.h>
 #include <R_ext/Rdynload.h>
-#include "EuclideanDistanceTransformation.h"
+#include "has_topotoolbox.h"
 
 static R_NativePrimitiveArgType myC_type[] = {
    INTSXP,INTSXP,INTSXP,INTSXP,INTSXP,INTSXP
 };
 static const R_CMethodDef cMethods[] = {
-   {"EuclideanDistanceTransformation", (DL_FUNC) &EuclideanDistanceTransformation, 6,myC_type},
+   {"has_topotoolbox", (DL_FUNC) &has_topotoolbox,0},
    {NULL},
 };
 
