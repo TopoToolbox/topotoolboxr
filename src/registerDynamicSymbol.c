@@ -6,8 +6,8 @@
 #include "has_topotoolbox.h"
 
 static const R_CMethodDef cMethods[] = {
-   {"has_topotoolbox", (DL_FUNC) &has_topotoolbox,0},
-   {NULL},
+   {"has_topotoolbox", (DL_FUNC) &has_topotoolbox,1},
+   NULL,
 };
 
 void R_init_topotoolboxr(DllInfo *info) {

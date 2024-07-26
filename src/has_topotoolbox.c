@@ -1,3 +1,3 @@
-int has_topotoolbox(void) {
-  return 1;
+void has_topotoolbox(int *a) {
+  *a+1;
 }
