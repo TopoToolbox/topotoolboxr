@@ -5,7 +5,4 @@
 #' @export
 has_topotoolbox <- function(a){
 	return(.C(C_has_topotoolbox,as.integer(a)))
-
-
-
 }
