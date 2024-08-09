@@ -4,7 +4,7 @@
 #'
 #' @export
 has_topotoolbox <- function(a){
-	return(.C("has_topotoolbox",as.integer(a)))
+	return(.C(C_has_topotoolbox,as.integer(a)))
 
 
 
