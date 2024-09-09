@@ -4,7 +4,7 @@
 \alias{has_topotoolbox}
 \title{has_topotoolbox}
 \usage{
-has_topotoolbox(a)
+has_topotoolbox()
 }
 \description{
 It is a dummy function that allows us to check for the inclusion of our Src C-functions.

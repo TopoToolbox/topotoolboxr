@@ -1,0 +1,10 @@
+TT_DIR=libs/libtopotoolbox
+PKG_CPPFLAGS=-I$(TT_DIR)/include
+PKG_CFLAGS=-DTOPOTOOLBOX_STATICLIB
+PKG_LIBS=$(TT_DIR)/src/libtopotoolbox.a
+
+$(SHLIB): $(TT_DIR)/src/libtopotoolbox.a
+
+$(TT_DIR)/src/libtopotoolbox.a:
+	cd $(TT_DIR)/src && $(MAKE) libtopotoolbox.a \
+	  CC="$(CC)" CFLAGS="$(CFLAGS) $(CPICFLAGS)" AR="$(AR)" RANLIB="$(RANLIB)"
