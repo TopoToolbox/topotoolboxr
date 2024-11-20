@@ -1,5 +1,5 @@
-#' Takes a Spatrast and gives back a matrix with the values of the Spatrast
-#' @param tiff Takes a Spatrast
+#' Takes a Spatrast and gives back a list with the values of the Spatrast, its cellsize and dimensions
+#' @param r Takes a Spatrast
 
 
 
