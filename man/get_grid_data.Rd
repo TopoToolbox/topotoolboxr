@@ -9,6 +9,13 @@ get_grid_data(r)
 \arguments{
 \item{r}{Takes a Spatrast}
 }
+\value{
+A list with components `z`, a vector 
+containing the grid data in row-major order, 
+`cellsize`, the horizontal resolution of the grid, 
+and `dims` a two-element vector with the number 
+of columns and rows of the grid.
+}
 \description{
 Takes a Spatrast and gives back a list with the values of the Spatrast, its cellsize and dimensions
 }

@@ -2,5 +2,4 @@
 
 export(has_topotoolbox)
 export(wrap_gradient8)
-importFrom(terra,rast)
 useDynLib(topotoolboxr, .registration = TRUE, .fixes = "C_")
