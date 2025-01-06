@@ -8,13 +8,13 @@
 #' @return A Spatrast
 #' @export
 
-fillsink <- function(dem,bc=NULL) {
+fillsinks <- function(dem,bc=NULL) {
     
+    d <- get_grid_data(dem) # Extract input data
     # if user didn't set bc, then set it manual
     if (is.null(bc))
     {
-        print("ich bin da")
-        bc <- matrix(0,dim(dem)[1],dim(dem)[2])
+        bc <- matrix(0,d$dims[2],d$dims[1])
         bc[terra::values(dem)=="NaN"] <- 1
         bc[1,] <- 1
         bc[,1] <- 1
@@ -24,13 +24,12 @@ fillsink <- function(dem,bc=NULL) {
         bc[,ncol(bc)] <- 1
     }
 
-    d <- get_grid_data(dem) # Extract input data
     output <- single(length(d$z)) #create output array
     fill_value = min(d$z, na.rm=TRUE) - 999
     nans = is.na(d$z)
     d$z[nans] = fill_value
     dimension <- c(d$dims[2],d$dims[1])
     result <- .C("wrap_fillsink",outputR=as.single(output),as.single(d$z),as.integer(bc),as.integer(d$dims))$outputR
-    d$z[nans] = NaN
-    return(result)
+    demf <- dem
+    terra::values(demf) <- result   d$z[nans] = NaN
 }
