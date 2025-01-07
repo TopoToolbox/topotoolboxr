@@ -14,7 +14,7 @@ fillsinks <- function(dem,bc=NULL) {
     # if user didn't set bc, then set it manual
     if (is.null(bc))
     {
-        bc <- matrix(0,d$dims[2],d$dims[1])
+        bc <- matrix(0,d$dims[1],d$dims[2])
         bc[terra::values(dem)=="NaN"] <- 1
         bc[1,] <- 1
         bc[,1] <- 1
@@ -28,8 +28,12 @@ fillsinks <- function(dem,bc=NULL) {
     fill_value = min(d$z, na.rm=TRUE) - 999
     nans = is.na(d$z)
     d$z[nans] = fill_value
-    dimension <- c(d$dims[2],d$dims[1])
+
     result <- .C("wrap_fillsink",outputR=as.single(output),as.single(d$z),as.integer(bc),as.integer(d$dims))$outputR
+
+    result[nans] = NaN
+
     demf <- dem
-    terra::values(demf) <- result   d$z[nans] = NaN
+    terra::values(demf) <- result
+    return(demf);
 }
