@@ -2,17 +2,16 @@
 #'
 #' This will make the Gradient8 function available to R from the libtotopotoolbox subdirectory
 #' 
-#' @param dem Input of type Spatrast from Terra
-#' @param unit Unit 
-#' @param use_mp Future feature that will allow to parallelize the code
+#' @param dem Digital elevation model (SpatRaster, terra)
+#' @param unit Unit of returned raster (char)
+#' @param use_mp Code parallelization (future feature)
 #'
 #' @import terra
 #'
-#' @return A Spatrast
+#' @return 8-connected neighborhood gradient of a digital elevation model (SpatRaster)
 #' @export
 
 gradient8 <- function(dem,unit='tangent',use_mp=0) {
-  
     # Extract input data
     d <- get_grid_data(dem)
     
