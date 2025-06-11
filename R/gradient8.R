@@ -3,6 +3,7 @@
 #' This will make the Gradient8 function available to R from the libtotopotoolbox subdirectory
 #' 
 #' @param dem Input of type Spatrast from Terra
+#' @param unit Unit 
 #' @param use_mp Future feature that will allow to parallelize the code
 #'
 #' @import terra
@@ -10,7 +11,7 @@
 #' @return A Spatrast
 #' @export
 
-gradient8 <- function(dem,use_mp=0) {
+gradient8 <- function(dem,unit='tangent',use_mp=0) {
   
     # Extract input data
     d <- get_grid_data(dem)
@@ -24,6 +25,17 @@ gradient8 <- function(dem,use_mp=0) {
     output <- single(length(d$z))
     result <- .C("wrap_gradient8",outputR=as.single(output),as.single(d$z),as.single(d$cellsize),as.integer(use_mp), as.integer(d$dims))$outputR
     result[log_nans] <- NaN
+    
+    # Unit conversion
+    if (unit == 'degree'){
+      result <- atan(result) * 180 / pi
+    } else if (unit == 'radian') {
+      result <- atan(result)
+    } else if (unit == 'sine') {
+      result <- sin(atan(result))
+    } else if (unit == 'percent'){
+      result <- result*100
+    }
     
     # Store results as terra SpatRaster
     G <- dem
