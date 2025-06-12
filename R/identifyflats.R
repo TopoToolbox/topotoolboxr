@@ -20,12 +20,11 @@ identifyflats <- function(dem) {
   # Compute flats using libtopotoolbox
   output <- integer(length(d$z))
   result <- .C("wrap_identifyflats",outputR=as.integer(output),as.single(d$z),as.integer(d$dims))$outputR
+  result[log_nans] <- 0
   
   # Write results into SpatRaster
   flats <- dem
   terra::values(flats) <- result
-  #flats_pre_nan <- flats
-  #terra::values(flats)[log_nans] <- 0 # Replace NaNs
   
   return(flats)
 }
