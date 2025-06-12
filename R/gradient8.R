@@ -1,15 +1,30 @@
 #' wrap_gradient8
 #'
-#' This will make the Gradient8 function available to R from the libtotopotoolbox subdirectory
-#' 
+#' Computes the gradient of a digital elevation model (DEM) using an 8-direction algorithm,
+#' making the Gradient8 function available to R from the libtotopotoolbox subdirectory.
+#'
 #' @param dem Digital elevation model (SpatRaster, terra)
-#' @param unit Unit of returned raster (char)
-#' @param use_mp Code parallelization (future feature)
+#' @param unit Unit of returned gradient values. Options are:
+#'   - 'tangent': Calculate the gradient as a tangent (default).
+#'   - 'radian': Calculate the gradient in radians.
+#'   - 'degree': Calculate the gradient in degrees.
+#'   - 'sine': Calculate the gradient as the sine of the angle.
+#'   - 'percent': Calculate the gradient as a percentage.
+#' @param use_mp Logical. If TRUE, use parallel processing for computation (future feature).
+#'   Currently not implemented.
 #'
 #' @import terra
 #'
 #' @return 8-connected neighborhood gradient of a digital elevation model (SpatRaster)
 #' @export
+#' 
+#' #' @examples
+#' \dontrun{
+#' DEM <- terra::rast(system.file("ex/elev.tif",package="terra"))
+#' DEM <- terra::project(DEM,"epsg:32632",res=90.0)
+#' G <- gradient8(DEM)
+#' plot(G, col = terrain.colors(256))
+#' }
 
 gradient8 <- function(dem,unit='tangent',use_mp=0) {
     # Extract input data
@@ -19,10 +34,14 @@ gradient8 <- function(dem,unit='tangent',use_mp=0) {
     fill_value <- min(d$z, na.rm=T) - 999
     log_nans <- is.na(d$z)
     d$z[log_nans] <- fill_value
-    
+    print(any(is.na(d$z)))
     # Compute gradient8 using libtopotoolbox
     output <- single(length(d$z))
-    result <- .C("wrap_gradient8",outputR=as.single(output),as.single(d$z),as.single(d$cellsize),as.integer(use_mp), as.integer(d$dims))$outputR
+    result <- .C("wrap_gradient8",
+                 outputR=as.single(output),
+                 as.single(d$z),as.single(d$cellsize),
+                 as.integer(use_mp),
+                 as.integer(d$dims))$outputR
     result[log_nans] <- NaN
     
     # Unit conversion
@@ -37,8 +56,8 @@ gradient8 <- function(dem,unit='tangent',use_mp=0) {
     }
     
     # Store results as terra SpatRaster
-    G <- dem
-    terra::values(G) <- result
+    g <- dem
+    terra::values(g) <- result
     
-    return(G)
+    return(g)
 }
