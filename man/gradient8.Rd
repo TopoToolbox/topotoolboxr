@@ -4,16 +4,34 @@
 \alias{gradient8}
 \title{wrap_gradient8}
 \usage{
-gradient8(dem, use_mp = 0)
+gradient8(dem, unit = "tangent", use_mp = 0)
 }
 \arguments{
-\item{dem}{Input of type Spatrast from Terra}
+\item{dem}{Digital elevation model (SpatRaster, terra)}
 
-\item{use_mp}{Future feature that will allow to parallelize the code}
+\item{unit}{Unit of returned gradient values. Options are:
+- 'tangent': Calculate the gradient as a tangent (default).
+- 'radian': Calculate the gradient in radians.
+- 'degree': Calculate the gradient in degrees.
+- 'sine': Calculate the gradient as the sine of the angle.
+- 'percent': Calculate the gradient as a percentage.}
+
+\item{use_mp}{Logical. If TRUE, use parallel processing for computation (future feature).
+Currently not implemented.}
 }
 \value{
-A Spatrast
+8-connected neighborhood gradient of a digital elevation model (SpatRaster)
 }
 \description{
-This will make the Gradient8 funktion available to R from the libtotopotoolbox subdirectory
+Computes the gradient of a digital elevation model (DEM) using an 8-direction algorithm,
+making the Gradient8 function available to R from the libtotopotoolbox subdirectory.
+}
+\examples{
+\dontrun{
+DEM <- terra::rast(system.file("ex/elev.tif",package="terra"))
+DEM <- terra::project(DEM,"epsg:32632",res=90.0)
+g <- gradient8(DEM)
+plot(g)
+}
+
 }

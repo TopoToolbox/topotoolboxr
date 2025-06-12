@@ -16,15 +16,16 @@
 #' @import terra
 #'
 #' @return 8-connected neighborhood gradient of a digital elevation model (SpatRaster)
-#' @export
 #' 
-#' #' @examples
+#' @examples
 #' \dontrun{
 #' DEM <- terra::rast(system.file("ex/elev.tif",package="terra"))
 #' DEM <- terra::project(DEM,"epsg:32632",res=90.0)
-#' G <- gradient8(DEM)
-#' plot(G, col = terrain.colors(256))
+#' g <- gradient8(DEM)
+#' plot(g)
 #' }
+#' 
+#' @export
 
 gradient8 <- function(dem,unit='tangent',use_mp=0) {
     # Extract input data
