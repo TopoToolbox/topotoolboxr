@@ -27,5 +27,4 @@ test_that("test-identifyflats.R creates reference DEM and compares to known clas
                c(20,1,2,2))
   expect_no_message(identifyflats(DEM))
   expect_no_error(identifyflats(DEM))
->>>>>>> origin/main
 })
