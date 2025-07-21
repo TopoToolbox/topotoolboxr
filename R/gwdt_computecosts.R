@@ -3,13 +3,14 @@
 #' This function makes the libopotoolbox cost computation for the gray-weighted 
 #' distance transform available in R
 #' 
-#' @param flats (terra::SpatRaster) 
+#' @param flats (terra::SpatRaster) Flat pixels as returned by identifyflats()
 #' @param original_dem (terra::SpatRaster) Raw digital elevation model 
 #' @param filled_dem (terra::SpatRaster) Processed DEM
 #'
 #' @import terra
 #'
-#' @return List containing costs and connected components
+#' @return List containing gray-weighted distance transform costs and labeled
+#' connected components for each flat pixel
 #' @export
 
 gwdt_computecosts <- function(flats, original_dem, filled_dem){
@@ -30,9 +31,13 @@ gwdt_computecosts <- function(flats, original_dem, filled_dem){
   # Compute costs using libtopotoolbox
   outputs <- single(length(fl$z))
   results <- .C("wrap_gwdt_computecosts",
-                costsR=as.single(outputs),conncompsR=as.integer(outputs),
-                as.single(fl$z),as.single(dr$z),as.single(df$z),
-                as.integer(fl$dims))
+                costsR = as.single(outputs),
+                conncompsR = as.integer(outputs),
+                flatsR = as.single(fl$z),
+                original_demR = as.single(dr$z),
+                filled_demR = as.single(df$z),
+                dimsR = as.integer(fl$dims),
+                NAOK = TRUE)
 
   # Write results into SpatRaster
   costs <- flats

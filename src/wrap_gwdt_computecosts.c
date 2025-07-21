@@ -5,8 +5,12 @@
 #include "topotoolbox.h"
 #include "topotoolboxr.h"
 
-void wrap_gwdt_computecosts(float *costsR, int *conncompsR, int *flatsR,
-                            float *original_demR, float *filled_demR, int *dimsR){
+void wrap_gwdt_computecosts(float *costsR,
+                            int *conncompsR,
+                            int *flatsR,
+                            float *original_demR,
+                            float *filled_demR,
+                            int *dimsR){
   
   // Transform integers from R to ptrdiff_t
   ptrdiff_t dims [2]= {dimsR[0], dimsR[1]};
@@ -19,8 +23,13 @@ void wrap_gwdt_computecosts(float *costsR, int *conncompsR, int *flatsR,
     }
   }
 
-  // Cost computation
-  gwdt_computecosts(costsR, conncomps, flatsR, original_demR, filled_demR, dims);
+  // Cost computation using libtopotoolbox
+  gwdt_computecosts(costsR,
+                    conncomps,
+                    flatsR,
+                    original_demR,
+                    filled_demR,
+                    dims);
   
   // Return conncomps as conncompsR
   for (ptrdiff_t j = 0; j < dims[1]; j++) {
