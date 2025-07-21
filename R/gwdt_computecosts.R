@@ -18,10 +18,14 @@ gwdt_computecosts <- function(flats, original_dem, filled_dem){
   df <- get_grid_data(filled_dem)
 
   # Check inputs
+  ## Grid dimensions
   if (!identical(fl$dims, dr$dims) || !identical(fl$dims, df$dims)) {
     stop("All input grids must have the same dimensions.")
   }
-  # Range of values for flats
+  ## Range of values for flats
+  if (!all(unique(terra::values(flats)) %in% c(0,1,2,5))){
+    stop("flats contains invalid values.")
+  }
 
   # Compute costs using libtopotoolbox
   outputs <- single(length(fl$z))
