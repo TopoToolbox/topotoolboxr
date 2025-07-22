@@ -11,6 +11,7 @@
 #'
 #' @return List containing gray-weighted distance transform costs and labeled
 #' connected components for each flat pixel
+#' 
 #' @export
 
 gwdt_computecosts <- function(flats, original_dem, filled_dem){
@@ -33,7 +34,7 @@ gwdt_computecosts <- function(flats, original_dem, filled_dem){
   results <- .C("wrap_gwdt_computecosts",
                 costsR = as.single(outputs),
                 conncompsR = as.integer(outputs),
-                flatsR = as.single(fl$z),
+                flatsR = as.integer(fl$z),
                 original_demR = as.single(dr$z),
                 filled_demR = as.single(df$z),
                 dimsR = as.integer(fl$dims),

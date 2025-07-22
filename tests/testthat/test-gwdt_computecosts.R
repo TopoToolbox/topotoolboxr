@@ -1,17 +1,13 @@
 test_that("test-gwdt_computecosts.R creates reference DEM and compares to known classifications", {
-  # Check flat DEM
-  DEMm <- matrix(1, nrow = 5, ncol = 5)
-  DEMr <- terra::rast(DEMm, crs="EPSG:25833")
-  DEMf <- fillsinks(DEMr)
-  FLATS <- identifyflats(DEMf)
-  expect_no_message(gwdt_computecosts(FLATS, DEMr, DEMf))
-  expect_no_error(gwdt_computecosts(FLATS, DEMr, DEMf))
-  
-  # Check Nan acceptance
-  DEMm[3,3] <- NaN
-  DEMr <- terra::rast(DEMm, crs="EPSG:25833")
-  DEMf <- fillsinks(DEMr)
-  FLATS <- identifyflats(DEMf)
-  expect_no_message(gwdt_computecosts(FLATS, DEMr, DEMf))
-  expect_no_error(gwdt_computecosts(FLATS, DEMr, DEMf))
+  DEMm <- matrix(1,nrow=7,ncol=5)*1:7
+  DEMm[2:6,c(2, 4)] = 1
+  DEMm[7,3] = NA
+  DEMr <- terra::rast(DEMm,crs="EPSG:25833")
+  DEMp <- fillsinks(DEMr)
+  FLATS <- identifyflats(DEMp)
+  ccc <- gwdt_computecosts(flats = FLATS, original_dem = DEMr, filled_dem = DEMp)
+  expect_equal(as.vector(unique(terra::values(ccc$costs))), c(0.0, 0.1))
+  expect_equal(as.vector(unique(terra::values(ccc$conncomps))), c(0, 6, 8))
+  expect_no_message(gwdt_computecosts(FLATS, DEMr, DEMp))
+  expect_no_error(gwdt_computecosts(FLATS, DEMr, DEMp))
 })
