@@ -1,4 +1,4 @@
-test_that("test-gwdt_computecosts.R creates reference DEM and compares to known classifications", {
+test_that("test-gwdt_computecosts.R creates reference DEM and computes known costs and connected components.", {
   DEMm <- matrix(1,nrow=7,ncol=5)*1:7
   DEMm[2:6,c(2, 4)] = 1
   DEMm[7,3] = NA
