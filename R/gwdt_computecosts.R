@@ -1,16 +1,15 @@
 #' wrap_gwdt_computecosts
 #'
-#' This function makes the libopotoolbox cost computation for the gray-weighted 
-#' distance transform available in R
+#' Compute the cost array used in the gradient-weighted distance
+#' transform (GWDT) algorithm.
 #' 
 #' @param flats (terra::SpatRaster) Flat pixels as returned by identifyflats()
-#' @param original_dem (terra::SpatRaster) Raw digital elevation model 
+#' @param original_dem (terra::SpatRaster) Raw DEM
 #' @param filled_dem (terra::SpatRaster) Processed DEM
 #'
 #' @import terra
 #'
-#' @return List containing gray-weighted distance transform costs and labeled
-#' connected components for each flat pixel
+#' @return A terra::SpatRaster of costs corresponding to each grid cell in the DEM.
 #' 
 #' @export
 
@@ -43,9 +42,6 @@ gwdt_computecosts <- function(flats, original_dem, filled_dem){
   # Write results into SpatRaster
   costs <- flats
   terra::values(costs) <- results$costsR
-  comps <- flats
-  terra::values(comps) <- results$conncompsR
 
-  return(list("costs" = costs,
-              "conncomps" = comps))
+  return(costs)
 }

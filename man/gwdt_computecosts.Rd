@@ -7,16 +7,16 @@
 gwdt_computecosts(flats, original_dem, filled_dem)
 }
 \arguments{
-\item{flats}{}
+\item{flats}{(terra::SpatRaster) Flat pixels as returned by identifyflats()}
 
-\item{original_dem}{(terra::SpatRaster) Raw digital elevation model}
+\item{original_dem}{(terra::SpatRaster) Raw DEM}
 
 \item{filled_dem}{(terra::SpatRaster) Processed DEM}
 }
 \value{
-List containing costs and connected components
+A terra::SpatRaster of costs corresponding to each grid cell in the DEM.
 }
 \description{
-This function makes the libopotoolbox cost computation for the gray-weighted 
-distance transform available in R
+Compute the cost array used in the gradient-weighted distance
+transform (GWDT) algorithm.
 }
