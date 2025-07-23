@@ -32,7 +32,6 @@ gwdt_computecosts <- function(flats, original_dem, filled_dem){
   outputs <- single(length(fl$z))
   results <- .C("wrap_gwdt_computecosts",
                 costsR = as.single(outputs),
-                conncompsR = as.integer(outputs),
                 flatsR = as.integer(fl$z),
                 original_demR = as.single(dr$z),
                 filled_demR = as.single(df$z),

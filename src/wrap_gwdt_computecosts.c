@@ -6,7 +6,6 @@
 #include "topotoolboxr.h"
 
 void wrap_gwdt_computecosts(float *costsR,
-                            int *conncompsR,
                             int *flatsR,
                             float *original_demR,
                             float *filled_demR,
