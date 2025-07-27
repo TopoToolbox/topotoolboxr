@@ -12,7 +12,7 @@
 
 gwdt <- function(DEM){
   DEMf <- fillsinks(DEM)
-  FLATS <- identifyflats(DEM)
+  FLATS <- identifyflats(DEMf)
   COSTS <- gwdt_computecosts(FLATS, DEM, DEMf)
   
   fl <- get_grid_data(FLATS)
