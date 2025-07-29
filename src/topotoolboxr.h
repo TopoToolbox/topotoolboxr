@@ -11,4 +11,6 @@ void wrap_gwdt_computecosts(float *costsR, int *flatsR, float *original_demR, fl
 
 void wrap_gwdt(float *distR, float *costsR, int *flatsR, int *dimsR);
 
+void wrap_flow_routing_d8_carve(int *sourceR, int *directionR, float *demR, float *distR, int *flatsR, int *dimsR);
+
 #endif // TOPOTOOLBOXR_H
