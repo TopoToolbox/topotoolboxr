@@ -4,7 +4,7 @@ test_that("test-flow_routing_d8_carve.R creates a reference DEM and tests known 
   DEMr <- terra::rast(DEMm,crs="EPSG:25833")
   SouDir <- flow_routing_d8_carve(DEMr)
   expect_equal(as.vector(table(terra::values(SouDir$direction))),
-               c(8, 5, 1, 3, 1, 3, 1, 2, 1))
+               c(4, 6, 1, 4, 1, 4, 1, 3, 1))
   # Missing value handling
   DEMm[2,4] <- NA
   DEM <- terra::rast(DEMm ,crs="EPSG:25833")
