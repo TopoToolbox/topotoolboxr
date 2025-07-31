@@ -15,8 +15,8 @@ flow_routing_d8_carve <- function(DEM){
   
   # Prepare inputs for flow routing based on raw DEM
   DEMf <- fillsinks(DEM)
+  FLATS <- identifyflats(DEMf)
   DIST <- gwdt(DEM)
-  FLATS <- identifyflats(DEM)
   
   demf <- get_grid_data(DEMf)
   dist <- get_grid_data(DIST)
