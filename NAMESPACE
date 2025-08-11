@@ -2,6 +2,7 @@
 
 export(fillsinks)
 export(flow_routing_d8_carve)
+export(flow_routing_d8_edgelist)
 export(gradient8)
 export(gwdt)
 export(gwdt_computecosts)
