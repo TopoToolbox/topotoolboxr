@@ -9,7 +9,9 @@ void wrap_hillshade_fused(float *outputR, float *demR, float *azimuthR, float *a
 
 void wrap_gradient8(float *outputR,float *demR, float *cellsizeR,int *use_mpR, int* dimsR);
 
-void wrap_fillsink(float *output, float *dem, int *bcR, int *dimsR);
+void wrap_fillsinks(float *output, float *dem, int *bcR, int *dimsR);
+
+void wrap_fillsinks_hybrid(float *output, float *dem, int *bcR, int *dimsR);
 
 void wrap_gwdt_computecosts(float *costsR, int *flatsR, float *original_demR, float *filled_demR, int *dimsR);
 
