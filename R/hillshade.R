@@ -1,3 +1,5 @@
+#' Hillshade
+#' 
 #' Compute a hillshade of the supplied digital elevation model
 #'
 #' @param DEM SpatRaster (terra); Digital elevation model
@@ -21,13 +23,13 @@ hillshade <- function(DEM,
   if (!is.numeric(azimuth) || azimuth < 0 || azimuth > 360) {
     stop("`azimuth` must be numeric and between 0 and 360 degrees.")
   }
-  if (!is.numeric(alitude) || alitude < 0 || alitude > 360) {
+  if (!is.numeric(altitude) || altitude < 0 || altitude > 360) {
     stop("`alitude` must be numeric and between 0 and 360 degrees.")
   }
   if (!is.numeric(exaggerate) || exaggerate < 0) {
     stop("`exaggerate` must be numeric and positive.")
   }
-  if(!is.bool(fused)) {
+  if(!is.logical(fused)) {
     stop("`fused` must be logical.")
   }
 

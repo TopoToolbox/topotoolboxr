@@ -17,7 +17,7 @@ void wrap_hillshade(float *outputR,
   // Transformation of integer to ptrdiff_t dimensions
   ptrdiff_t dims [2]= {dimsR[0], dimsR[1]};
 
-  // Hillshade computation
+  // Call libtopotoolbox function
   hillshade(outputR,
             dxR,
             dyR,
