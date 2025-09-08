@@ -1,5 +1,5 @@
 ^LICENSE\.md$
-(\.git$|\.git/)
-(\.github$|\.github/)
+^(\.git$|\.git/)
+^(\.github$|\.github/)
 ^src/libs/libtopotoolbox/\.clang-format$
 ^src/libs/libtopotoolbox/src/libtopotoolbox.a$
