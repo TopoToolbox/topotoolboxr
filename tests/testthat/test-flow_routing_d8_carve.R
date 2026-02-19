@@ -1,12 +1,20 @@
-test_that("test-flow_routing_d8_carve.R creates a reference DEM and tests known directions and missing data handling.", {
+test_that("Tests flow_routing_d8_carve on a synthetic DEM.", {
   # Funnel shape test
-  DEMm <- t(matrix(1,nrow=5,ncol=5)*c(3,2,1,2,3))*c(3,2,1,2,3)
-  DEMr <- terra::rast(DEMm,crs="EPSG:25833")
-  SouDir <- flow_routing_d8_carve(DEMr)
-  expect_equal(as.vector(table(terra::values(SouDir$direction))),
+  demm <- t(matrix(1, nrow = 5, ncol = 5) * c(3, 2, 1, 2, 3)) * c(3, 2, 1, 2, 3)
+  demr <- terra::rast(demm, crs = "EPSG:25833")
+  # GRIDobj handling
+  expect_silent(sou_dir <- flow_routing_d8_carve(GRIDobj(demr)))
+  expect_true(inherits(sou_dir$source, "GRIDobj"))
+  expect_true(inherits(sou_dir$direction, "GRIDobj"))
+  # SpatRaster handling
+  expect_silent(sou_dir <- flow_routing_d8_carve(demr))
+  expect_true(inherits(sou_dir$source, "SpatRaster"))
+  expect_true(inherits(sou_dir$direction, "SpatRaster"))
+  # Return check
+  expect_equal(as.vector(table(terra::values(sou_dir$direction))),
                c(4, 6, 1, 4, 1, 4, 1, 3, 1))
   # Missing value handling
-  DEMm[2,4] <- NA
-  DEM <- terra::rast(DEMm ,crs="EPSG:25833")
-  expect_no_error(flow_routing_d8_carve(DEM))
+  demm[2, 4] <- NA
+  dem <- terra::rast(demm, crs = "EPSG:25833")
+  expect_silent(flow_routing_d8_carve(dem))
 })

@@ -4,10 +4,10 @@
 \alias{source_indices.FLOWobj}
 \title{Unravel source indices}
 \usage{
-\method{source_indices}{FLOWobj}(TTobj)
+\method{source_indices}{FLOWobj}(ttobj)
 }
 \arguments{
-\item{TTobj}{FLOWobj
+\item{ttobj}{FLOWobj
 
 FLOWobj for which to compute the grid indices of the source pixels}
 }

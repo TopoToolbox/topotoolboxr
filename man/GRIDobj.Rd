@@ -27,10 +27,7 @@ GRIDobj(Z, cs)
 
 x: integer or float vector representing x coordinates for GRIDobj(Z, x, y)
 
-y: integer or float vector representing y coordinates for GRIDobj(Z, x, y)
-
-vec: integer or float or logical vector to set GRIDobj values to for
-GRIDobj(GRIDobj, vec)}
+y: integer or float vector representing y coordinates for GRIDobj(Z, x, y)}
 }
 \value{
 GRIDobj

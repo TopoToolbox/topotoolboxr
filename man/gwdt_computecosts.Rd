@@ -7,14 +7,22 @@
 gwdt_computecosts(flats, original_dem, filled_dem)
 }
 \arguments{
-\item{flats}{(terra::SpatRaster) Flat pixels as returned by identifyflats()}
+\item{flats}{GRIDobj | SpatRaster
 
-\item{original_dem}{(terra::SpatRaster) Raw DEM}
+Flat pixels as returned by identifyflats()}
 
-\item{filled_dem}{(terra::SpatRaster) Processed DEM}
+\item{original_dem}{GRIDobj | SpatRaster
+
+Raw digital elevation model}
+
+\item{filled_dem}{GRIDobj | SpatRaster
+
+Processed digital elevation model}
 }
 \value{
-A terra::SpatRaster of costs corresponding to each grid cell in the DEM.
+GRIDobj | SpatRaster
+
+Costs corresponding to each grid cell in the DEM
 }
 \description{
 Compute the cost array used in the gradient-weighted distance

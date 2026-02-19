@@ -4,10 +4,10 @@
 \alias{unravel_index}
 \title{Generic function for unravel_index}
 \usage{
-unravel_index(TTobj, idxs)
+unravel_index(ttobj, idxs)
 }
 \arguments{
-\item{TTobj}{FLOWobj or STREAMobj
+\item{ttobj}{FLOWobj or STREAMobj
 
 Object from which the array dimensions are computed}
 

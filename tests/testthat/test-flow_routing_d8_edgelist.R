@@ -1,29 +1,28 @@
-test_that("test-flow_routing_d8_edgelist.R creates a reference DEM and tests known sources, targets and missing data handling.", {
+test_that("Tests flow_routing_d8_edgelist on a synthetic DEM.", {
   # Create reference features for synthetic DEMs
-  funnel <- t(matrix(1,5,5)*c(3,2,1,2,3))*c(3,2,1,2,3)
+  funnel <- t(matrix(1, 5, 5) * c(3, 2, 1, 2, 3)) * c(3, 2, 1, 2, 3)
   funnel[funnel > 6] <- 6
-  slope <- t(matrix(6,5,5) + c(1,2,3,4,5)) + c(2,1,0,1,2) - 2
-  DEMm <- cbind(funnel, slope)
+  slope <- t(matrix(6, 5, 5) + c(1, 2, 3, 4, 5)) + c(2, 1, 0, 1, 2) - 2
+  demm <- cbind(funnel, slope)
   # Check improper input handling
-  expect_error(flow_routing_d8_edgelist(DEMm))
+  expect_error(flow_routing_d8_edgelist(demm))
   # Check proper input handling
-  DEM <- terra::rast(DEMm,crs="EPSG:25833")
-  expect_no_error(flow_routing_d8_edgelist(DEM))
-  expect_no_message(flow_routing_d8_edgelist(DEM))
-  expect_equal(flow_routing_d8_edgelist(DEM)$source,
-               FLOWobj(DEM)$source)
-  expect_equal(flow_routing_d8_edgelist(DEM)$target,
-               FLOWobj(DEM)$target)
+  dem <- terra::rast(demm, crs = "EPSG:25833")
+  expect_silent(sou_tar <- flow_routing_d8_edgelist(GRIDobj(dem)))
+  expect_silent(sou_tar <- flow_routing_d8_edgelist(dem))
+  expect_equal(sou_tar$source,
+               FLOWobj(dem)$source)
+  expect_equal(sou_tar$target,
+               FLOWobj(dem)$target)
   # Checking missing data handling
-  DEMm[1,1] <- NA
-  DEMm[2,6] <- NA
-  DEMm[3,3] <- NA
-  DEMm[3,10] <- NA
-  DEM <- terra::rast(DEMm, crs = "EPSG:25833")
-  expect_no_error(flow_routing_d8_edgelist(DEM))
-  expect_no_message(flow_routing_d8_edgelist(DEM))
-  expect_equal(flow_routing_d8_edgelist(DEM)$source,
-               FLOWobj(DEM)$source)
-  expect_equal(flow_routing_d8_edgelist(DEM)$target,
-               FLOWobj(DEM)$target)
+  demm[1, 1] <- NA
+  demm[2, 6] <- NA
+  demm[3, 3] <- NA
+  demm[3, 10] <- NA
+  dem <- terra::rast(demm, crs = "EPSG:25833")
+  expect_silent(sou_tar <- flow_routing_d8_edgelist(dem))
+  expect_equal(sou_tar$source,
+               FLOWobj(dem)$source)
+  expect_equal(sou_tar$target,
+               FLOWobj(dem)$target)
 })

@@ -4,10 +4,10 @@
 \alias{flow_routing_d8_edgelist}
 \title{wrap_flow_routing_d8_edgelist}
 \usage{
-flow_routing_d8_edgelist(DEM, bc = NULL, hybrid = TRUE)
+flow_routing_d8_edgelist(dem, bc = NULL, hybrid = TRUE)
 }
 \arguments{
-\item{DEM}{GRIDobj
+\item{dem}{GRIDobj
 
 Digital elevation model}
 

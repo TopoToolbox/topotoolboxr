@@ -4,10 +4,10 @@
 \alias{target_indices.FLOWobj}
 \title{Unravel target indices}
 \usage{
-\method{target_indices}{FLOWobj}(TTobj)
+\method{target_indices}{FLOWobj}(ttobj)
 }
 \arguments{
-\item{TTobj}{FLOWobj
+\item{ttobj}{FLOWobj
 
 FLOWobj for which to compute the grid indices of the target pixels}
 }

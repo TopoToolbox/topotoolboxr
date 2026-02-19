@@ -1,12 +1,21 @@
-test_that("test-gwdt_computecosts.R creates reference DEM and computes known costs and connected components.", {
-  DEMm <- matrix(1,nrow=7,ncol=5)*1:7
-  DEMm[2:6,c(2, 4)] = 1
-  DEMm[7,3] = NA
-  DEMr <- terra::rast(DEMm,crs="EPSG:25833")
-  DEMp <- fillsinks(DEMr)
-  FLATS <- identifyflats(DEMp)
-  costs <- gwdt_computecosts(flats = FLATS, original_dem = DEMr, filled_dem = DEMp)
+test_that("Tests gwdt_computecosts on reference DEM", {
+  demm <- matrix(1, nrow = 7, ncol = 5) * 1:7
+  demm[2:6, c(2, 4)] <- 1
+  demm[7, 3] <- NA
+  demr <- terra::rast(demm, crs = "EPSG:25833")
+  demp <- fillsinks(demr)
+  flats <- identifyflats(demp)
+  expect_silent(costs <- gwdt_computecosts(flats = GRIDobj(flats),
+                                           original_dem = demr,
+                                           filled_dem = demp))
+  expect_true(inherits(costs, "GRIDobj"))
+  expect_silent(costs <- gwdt_computecosts(flats = flats,
+                                           original_dem = demr,
+                                           filled_dem = GRIDobj(demp)))
+  expect_true(inherits(costs, "GRIDobj"))
+  expect_silent(costs <- gwdt_computecosts(flats = flats,
+                                           original_dem = demr,
+                                           filled_dem = demp))
+  expect_true(inherits(costs, "SpatRaster"))
   expect_equal(as.vector(unique(terra::values(costs))), c(0.0, 0.1))
-  expect_no_message(gwdt_computecosts(FLATS, DEMr, DEMp))
-  expect_no_error(gwdt_computecosts(FLATS, DEMr, DEMp))
 })

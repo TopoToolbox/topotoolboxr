@@ -4,14 +4,14 @@
 \alias{flow_routing_d8_carve}
 \title{wrap_flow_routing_d8_carve}
 \usage{
-flow_routing_d8_carve(DEM, bc = NULL, hybrid = TRUE)
+flow_routing_d8_carve(dem, bc = NULL, hybrid = TRUE)
 }
 \arguments{
-\item{DEM}{GRIDobj
+\item{dem}{GRIDobj | SpatRaster
 
 Digital elevation model}
 
-\item{bc}{numeric array or matrix, optional
+\item{bc}{numeric array | matrix, optional
 
 Boundary conditions for sink filling. `bc` should match the shape of the DEM.
 Values of 1 indicate pixels that should be fixed to their values in the
@@ -24,8 +24,10 @@ True. Hybrid reconstruction is faster but requires additional memory be
 allocated for a queue.}
 }
 \value{
-A list containing two terra::SpatRaster representing the source cells
-for flow routing (source) and the flow direction for each grid cell (direction).
+list
+
+A list containing two GRIDobj or SpatRaster representing the source cells for
+flow routing (source) and the flow direction for each grid cell (direction).
 }
 \description{
 Compute the flow routing using the D8 algorithm with carving for flat areas.

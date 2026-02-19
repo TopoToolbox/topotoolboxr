@@ -79,14 +79,14 @@ test_that("Checks if each use case creates a GRIDobj without errors and
               inherits(GRIDobj(dem), "GRIDobj")
             )
             expect_true(
-              is.double(get_grid_data(demg)$z)
+              is.double(get_grid_data(demg$raster)$z)
             )
             # Case 5.2: GRIDobj(TTobj, 'class')
             expect_true(
-              is.integer(get_grid_data(GRIDobj(dem, "integer"))$z)
+              is.integer(get_grid_data(GRIDobj(dem, "integer")$raster)$z)
             )
             expect_true(
-              is.logical(get_grid_data(GRIDobj(dem, "logical"))$z)
+              is.logical(get_grid_data(GRIDobj(dem, "logical")$raster)$z)
             )
             # Case 5.3: GRIDobj(TTobj, Z)
             expect_error(

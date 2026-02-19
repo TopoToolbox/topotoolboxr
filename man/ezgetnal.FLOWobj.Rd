@@ -4,10 +4,10 @@
 \alias{ezgetnal.FLOWobj}
 \title{FLOWobj node attribute list}
 \usage{
-\method{ezgetnal}{FLOWobj}(TTobj, k)
+\method{ezgetnal}{FLOWobj}(ttobj, k)
 }
 \arguments{
-\item{TTobj}{FLOWobj
+\item{ttobj}{FLOWobj
 The FLOWobj for which to retrieve the node attribute list}
 
 \item{k}{GridObject or matrix or array or scalar

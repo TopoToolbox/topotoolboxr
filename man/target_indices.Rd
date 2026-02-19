@@ -4,10 +4,10 @@
 \alias{target_indices}
 \title{Generic function for target_indices}
 \usage{
-target_indices(TTobj)
+target_indices(ttobj)
 }
 \arguments{
-\item{TTobj}{FLOWobj or STREAMobj
+\item{ttobj}{FLOWobj or STREAMobj
 TopoToolbox object containing the one-dimensional target indices}
 }
 \value{

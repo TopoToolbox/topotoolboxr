@@ -2,31 +2,49 @@
 #'
 #' Compute the cost array used in the gradient-weighted distance
 #' transform (GWDT) algorithm.
-#' 
-#' @param flats (terra::SpatRaster) Flat pixels as returned by identifyflats()
-#' @param original_dem (terra::SpatRaster) Raw DEM
-#' @param filled_dem (terra::SpatRaster) Processed DEM
 #'
-#' @import terra
+#' @param flats GRIDobj | SpatRaster
 #'
-#' @return A terra::SpatRaster of costs corresponding to each grid cell in the DEM.
-#' 
+#' Flat pixels as returned by identifyflats()
+#'
+#' @param original_dem GRIDobj | SpatRaster
+#'
+#' Raw digital elevation model
+#'
+#' @param filled_dem GRIDobj | SpatRaster
+#'
+#' Processed digital elevation model
+#'
+#' @return GRIDobj | SpatRaster
+#'
+#' Costs corresponding to each grid cell in the DEM
+#'
 #' @export
 
-gwdt_computecosts <- function(flats, original_dem, filled_dem){
+gwdt_computecosts <- function(flats, original_dem, filled_dem) {
+
+  # Input validation
+  flats <- processgrid(flats)
+  provided_go_fl <- flats$provided_go
+  flats <- flats$r
+  original_dem <- processgrid(original_dem)
+  provided_go_or <- original_dem$provided_go
+  original_dem <- original_dem$r
+  filled_dem <- processgrid(filled_dem)
+  provided_go_fi <- filled_dem$provided_go
+  filled_dem <- filled_dem$r
+  provided_go <- any(provided_go_fl, provided_go_or, provided_go_fi)
+
+  if (!validatealignment(flats, original_dem, filled_dem)) {
+    stop("All inputs must have the same dimensions.")
+  }
+  if (!all(unique(terra::values(flats)) %in% c(0, 1, 2, 5))){
+    stop("'flats' contains invalid values.")
+  }
+
   fl <- get_grid_data(flats)
   dr <- get_grid_data(original_dem)
   df <- get_grid_data(filled_dem)
-
-  # Check inputs
-  ## Grid dimensions
-  if (!identical(fl$dims, dr$dims) || !identical(fl$dims, df$dims)) {
-    stop("All input grids must have the same dimensions.")
-  }
-  ## Range of values for flats
-  if (!all(unique(terra::values(flats)) %in% c(0,1,2,5))){
-    stop("flats contains invalid values.")
-  }
 
   # Compute costs using libtopotoolbox
   outputs <- single(length(fl$z))
@@ -41,6 +59,8 @@ gwdt_computecosts <- function(flats, original_dem, filled_dem){
   # Write results into SpatRaster
   costs <- flats
   terra::values(costs) <- results$costsR
-
-  return(costs)
+  if (provided_go) {
+    costs <- GRIDobj(costs)
+  }
+  costs
 }

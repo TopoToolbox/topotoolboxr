@@ -4,21 +4,27 @@
 \alias{hillshade}
 \title{Hillshade}
 \usage{
-hillshade(DEM, azimuth = 315, altitude = 60, exaggerate = 1, fused = TRUE)
+hillshade(dem, azimuth = 315, altitude = 60, exaggerate = 1, fused = TRUE)
 }
 \arguments{
-\item{DEM}{SpatRaster (terra); Digital elevation model}
+\item{dem}{GRIDobj | SpatRaster (terra); Digital elevation model}
 
-\item{azimuth}{float; The azimuth angle of the light source measured in degrees clockwise from north. Defaults to 315 degrees.}
+\item{azimuth}{float; The azimuth angle of the light source measured in
+degrees clockwise from north. Defaults to 315 degrees.}
 
-\item{altitude}{float; The altitude angle of the light source measured in degrees above the horizon. Defaults to 60 degrees.}
+\item{altitude}{float; The altitude angle of the light source measured in
+degrees above the horizon. Defaults to 60 degrees.}
 
-\item{exaggerate}{float; The amount of vertical exaggeration. Increase to emphasize elevation differences in flat terrain. Defaults to 1.0}
+\item{exaggerate}{float; The amount of vertical exaggeration. Increase to
+emphasize elevation differences in flat terrain. Defaults to 1.0}
 
-\item{fused}{logical; If TRUE use the fused hillshade computation in libtopotoolbox, which requires less memory but can be slightly slower. If you have a small DEM, and are repeatedly creating hillshades consider setting to False for increased performance. Defaults to True.}
+\item{fused}{logical; If TRUE use the fused hillshade computation in
+libtopotoolbox, which requires less memory but can be slightly slower. If you
+have a small DEM, and are repeatedly creating hillshades consider setting to
+FALSE for increased performance. Defaults to TRUE.}
 }
 \value{
-SpatRaster (terra); Hillshade
+GRIDobj | SpatRaster (terra); Hillshade
 }
 \description{
 Compute a hillshade of the supplied digital elevation model

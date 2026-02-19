@@ -17,7 +17,7 @@ dim_cr <- function(x) {
 #' @description
 #' `unravel_index` converts flat indices into a grid grid indices.
 #'
-#' @param TTobj FLOWobj or STREAMobj
+#' @param ttobj FLOWobj or STREAMobj
 #'
 #' Object from which the array dimensions are computed
 #'
@@ -33,7 +33,7 @@ dim_cr <- function(x) {
 #' `unravel_index` currently only supports the FLOWobj.
 #'
 #' @export
-unravel_index <- function(TTobj, idxs) {
+unravel_index <- function(ttobj, idxs) {
   UseMethod("unravel_index")
 }
 
@@ -43,7 +43,7 @@ unravel_index <- function(TTobj, idxs) {
 #' `source_indices` uses `unravel_index` to compute the grid indices of
 #' source pixels of a TopoToolbox object.
 #'
-#' @param TTobj FLOWobj or STREAMobj
+#' @param ttobj FLOWobj or STREAMobj
 #' TopoToolbox object containing the one-dimensional source indices
 #'
 #' @return n x 2 matrix
@@ -54,7 +54,7 @@ unravel_index <- function(TTobj, idxs) {
 #' `source_indices` currently only supports the FLOWobj.
 #'
 #' @export
-source_indices <- function(TTobj) {
+source_indices <- function(ttobj) {
   UseMethod("source_indices")
 }
 
@@ -64,7 +64,7 @@ source_indices <- function(TTobj) {
 #' `target_indices` uses `unravel_index` to compute the grid indices of target
 #' pixels of a TopoToolbox object.
 #'
-#' @param TTobj FLOWobj or STREAMobj
+#' @param ttobj FLOWobj or STREAMobj
 #' TopoToolbox object containing the one-dimensional target indices
 #'
 #' @return n x 2 matrix
@@ -75,7 +75,7 @@ source_indices <- function(TTobj) {
 #' `target_indices` currently only supports the FLOWobj.
 #'
 #' @export
-target_indices <- function(TTobj) {
+target_indices <- function(ttobj) {
   UseMethod("target_indices")
 }
 
@@ -84,7 +84,7 @@ target_indices <- function(TTobj) {
 #' @description
 #' `ezgetnal` retrieves a node attribute list for a TopoToolbox object.
 #'
-#' @param TTobj FLOWobj or STREAMobj
+#' @param ttobj FLOWobj or STREAMobj
 #'
 #' The TopoToolbox object for which to extract the node attribute list.
 #'
@@ -98,6 +98,6 @@ target_indices <- function(TTobj) {
 #'  returns an array of the right shape filled with `k`.
 #'
 #' @export
-ezgetnal <- function(TTobj, k) {
+ezgetnal <- function(ttobj, k) {
   UseMethod("ezgetnal")
 }

@@ -4,10 +4,10 @@
 \alias{FLOWobj}
 \title{Create instance of a FLOWobj}
 \usage{
-FLOWobj(DEM, bc = NULL, hybrid = TRUE)
+FLOWobj(dem, bc = NULL, hybrid = TRUE)
 }
 \arguments{
-\item{DEM}{GRIDobj
+\item{dem}{GRIDobj
 
 The GRIDobj that will be the basis of the computation.}
 
@@ -40,8 +40,8 @@ which could lead to issues when using very large DEMs.
 }
 \examples{
 \dontrun{
-DEM <- terra::rast(system.file("ex/elev.tif",package="terra"))
-DEM <- terra::project(DEM,"EPSG:32632",res=90.0)
+DEM <- terra::rast(system.file("ex/elev.tif", package="terra"))
+DEM <- terra::project(DEM, "EPSG:32632", res=90.0)
 FD <- FLOWobj(DEM)
 }
 

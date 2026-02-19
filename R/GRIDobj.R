@@ -72,9 +72,6 @@
 #'
 #' y: integer or float vector representing y coordinates for GRIDobj(Z, x, y)
 #'
-#' vec: integer or float or logical vector to set GRIDobj values to for
-#' GRIDobj(GRIDobj, vec)
-#'
 #' @returns GRIDobj
 #'
 #' Returns a GRIDobj containing the SpatRaster object.
@@ -102,10 +99,10 @@ GRIDobj.NULL <- function(z, ..., crs = "") {
   )
 
   # Creating the actual GRIDobj
-  return(structure(
+  structure(
     list(raster = r),
     class = "GRIDobj"
-  ))
+  )
 }
 
 #' @exportS3Method
@@ -118,10 +115,10 @@ GRIDobj.character <- function(z, ...) {
     r <- terra::rast(z)
 
     # Create GRIDobj
-    return(structure(
+    structure(
       list(raster = r),
       class = "GRIDobj"
-    ))
+    )
   }
 }
 
@@ -135,10 +132,10 @@ GRIDobj.SpatRaster <- function(z, ...) {
     r <- z
 
     # Create GRIDobj
-    return(structure(
+    structure(
       list(raster = r),
       class = "GRIDobj"
-    ))
+    )
   }
 }
 
@@ -219,10 +216,10 @@ GRIDobj.matrix <- function(z, ..., crs = "") { # Case 1: GRIDobj(Z, cs)
   }
 
   # Create GRIDobj
-  return(structure(
+  structure(
     list(raster = r),
     class = "GRIDobj"
-  ))
+  )
 }
 
 #' @exportS3Method
@@ -268,29 +265,16 @@ GRIDobj.GRIDobj <- function(z, ...) {
     }
     # Value assignment
     terra::values(r) <- c(t(Z)) # Matrix to vector in row-major order
-  } else if ("vec" %in% names(args) || is.vector(args[[1]])) {
-    if ("vec" %in% names(args)) {
-      vec <- args$vec
-    } else if (is.vector(args[[1]])) {
-      vec <- args[[1]]
-    }
-    # Input validation
-    if (length(vec) != prod(dim_cr(r))) {
-      stop(paste0("Vector length is ", length(vec),
-                  " and raster dimensions are ", paste(dim(r), collapse = ",")))
-    }
-    # Value assignment
-    terra::values(r) <- vec
   } else {
     stop("Second input must be either a character string, a vector, a matrix or
          an array.")
   }
 
   # Create GRIDobj
-  return(structure(
+  structure(
     list(raster = r),
     class = "GRIDobj"
-  ))
+  )
 }
 
 #' @exportS3Method
@@ -305,7 +289,7 @@ Ops.GRIDobj <- function(e1, e2) {
   op_func <- get(.Generic, envir = asNamespace("terra"))
   result <- do.call(op_func, list(r1, r2))
 
-  return(GRIDobj(result))
+  GRIDobj(result)
 }
 
 #' Get the dimensions
@@ -318,7 +302,7 @@ Ops.GRIDobj <- function(e1, e2) {
 #'
 #' Dimensions of the GRIDobj
 dim.GRIDobj <- function(x) {
-  return(dim(x$raster))
+  dim(x$raster)
 }
 
 #' Get the dimensions
@@ -363,7 +347,6 @@ reproject <- function(grid, target, ...) {
     stop("Coordinate reference system of y is not projected.")
   }
   grid$raster <- terra::project(grid$raster, target, ...)
-  return(grid)
 }
 
 #' Plot a GRIDobj

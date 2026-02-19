@@ -4,10 +4,10 @@
 \alias{flow_accumulation}
 \title{Compute accumulation of flow}
 \usage{
-flow_accumulation(FD, weights = 1)
+flow_accumulation(fd, weights = 1)
 }
 \arguments{
-\item{FD}{FLOWobj
+\item{fd}{FLOWobj
 
 The FLOWobj that will be the basis of the computation.}
 
@@ -22,7 +22,7 @@ default 1.0}
 \value{
 GRIDobj
 
-A new GridObject containing the flow accumulation grid.
+A new GRIDobj containing the flow accumulation grid.
 }
 \description{
 Computes the flow accumulation for a given flow network using optional

@@ -7,11 +7,16 @@
 identifyflats(dem)
 }
 \arguments{
-\item{dem}{Input of type Spatrast from Terra}
+\item{dem}{GRIDobj | SpatRaster
+
+Digital elevation model}
 }
 \value{
-A Spatrast
+GRIDobj | SpatRaster
+
+Grid of identified flats, sills and presills
 }
 \description{
-This will make the identifyflats function available to R from the libtotopotoolbox subdirectory
+This will make the identifyflats function available to R from the
+libtotopotoolbox subdirectory.
 }

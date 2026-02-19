@@ -4,10 +4,10 @@
 \alias{source_indices}
 \title{Generic function for source_indices}
 \usage{
-source_indices(TTobj)
+source_indices(ttobj)
 }
 \arguments{
-\item{TTobj}{FLOWobj or STREAMobj
+\item{ttobj}{FLOWobj or STREAMobj
 TopoToolbox object containing the one-dimensional source indices}
 }
 \value{

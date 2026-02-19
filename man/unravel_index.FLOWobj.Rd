@@ -4,10 +4,10 @@
 \alias{unravel_index.FLOWobj}
 \title{Unravel indices}
 \usage{
-\method{unravel_index}{FLOWobj}(TTobj, idxs)
+\method{unravel_index}{FLOWobj}(ttobj, idxs)
 }
 \arguments{
-\item{TTobj}{FLOWobj
+\item{ttobj}{FLOWobj
 
 FLOWobj for which to compute the grid indices}
 

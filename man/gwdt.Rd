@@ -4,13 +4,17 @@
 \alias{gwdt}
 \title{wrap_gwdt}
 \usage{
-gwdt(DEM)
+gwdt(dem)
 }
 \arguments{
-\item{DEM}{(terra::SpatRaster) Digital elevation model}
+\item{dem}{GRIDobj | SpatRaster
+
+Digital elevation model}
 }
 \value{
-A terra::SpatRaster representing the GWDT distances for each grid cell.
+GRIDobj | SpatRaster
+
+GWDT distances for each grid cell.
 }
 \description{
 Perform the grey-weighted distance transform (GWDT) on the DEM.

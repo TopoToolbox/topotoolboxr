@@ -4,14 +4,14 @@
 \alias{fillsinks}
 \title{fillsinks}
 \usage{
-fillsinks(DEM, bc = NULL, hybrid = TRUE)
+fillsinks(dem, bc = NULL, hybrid = TRUE)
 }
 \arguments{
-\item{DEM}{GRIDobj
+\item{dem}{GRIDobj | SpatRaster
 
 Digital elevation model}
 
-\item{bc}{numeric array or matrix, optional
+\item{bc}{numeric array | numeric matrix, optional
 
 Boundary conditions for sink filling. `bc` should match the shape of the DEM.
 Values of 1 indicate pixels that should be fixed to their values in the
@@ -24,9 +24,9 @@ True. Hybrid reconstruction is faster but requires additional memory be
 allocated for a queue.}
 }
 \value{
-GRIDobj
+GRIDobj | SpatRaster
 
-The filled DEM
+Filled digital elevation model
 }
 \description{
 Fill sinks in the digital elevation model (DEM).

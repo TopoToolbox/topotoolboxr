@@ -4,10 +4,10 @@
 \alias{ezgetnal}
 \title{Generic function for ezgetnal}
 \usage{
-ezgetnal(TTobj, k)
+ezgetnal(ttobj, k)
 }
 \arguments{
-\item{TTobj}{FLOWobj or STREAMobj
+\item{ttobj}{FLOWobj or STREAMobj
 
 The TopoToolbox object for which to extract the node attribute list.}
 
