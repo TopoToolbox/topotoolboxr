@@ -564,15 +564,17 @@ plot.GRIDobj <- function(x, interactive = FALSE, ...) {
 #'
 #' @export
 info <- function(grid, na.rm = FALSE, show_crs = FALSE) {
-  cat("Name:", terra::names(grid$raster), "\n")
+  grid <- processgrid(grid)$r
+  gd <- get_grid_data(grid)
+  cat("Name:", terra::names(grid), "\n")
   dims <- dim(grid)
   cat("Rows:", dims[1], "\n")
   cat("Cols:", dims[2], "\n")
-  cat("Cellsize:", get_grid_data(grid)$cellsize, "\n")
-  cat("Extent:", paste(ext(grid$raster), collapse = " "),
+  cat("Cellsize:", gd$cellsize, "\n")
+  cat("Extent:", paste(ext(grid), collapse = " "),
       "(xmin, xmax, ymin, ymax)\n")
   cat("Z values:\n")
-  Z <- get_grid_data(grid)$z
+  Z <- gd$z
   q <- stats::quantile(Z, probs = c(0.25, 0.5, 0.75), na.rm = na.rm)
   cat("- Mean:", base::mean(Z, na.rm = na.rm), "\n")
   cat("- Sd:", stats::sd(Z, na.rm = na.rm), "\n")
@@ -581,5 +583,5 @@ info <- function(grid, na.rm = FALSE, show_crs = FALSE) {
   cat("- Median:", q[2], "\n")
   cat("- 3rd Qu.:", q[3], "\n")
   cat("- Maximum:", base::max(Z, na.rm = na.rm), "\n")
-  if (show_crs) cat("CRS:", terra::crs(grid$raster), "\n")
+  if (show_crs) cat("CRS:", terra::crs(grid), "\n")
 }
