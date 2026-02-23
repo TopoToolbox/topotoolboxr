@@ -50,8 +50,8 @@ resolution (cf. \code{terra::resample()}).
 DEM = GRIDobj("path/to/file") creates a GRIDobj by reading the file
 leveraging the \code{terra::rast()} function.
 
-DEM = GRIDobj(SpatRaster) creates a GRIDobj from a provided SpatRaster
-object.
+DEM = GRIDobj(SpatRaster) and GRIDobj(PackedSpatRaster) creates a GRIDobj
+from a provided SpatRaster object.
 
 DEM = GRIDobj(Z) creates a GRIDobj of a numeric matrix \code{Z} and a
 default resolution of \code{1} m.
@@ -89,4 +89,11 @@ Note that while throughout this help text GRIDobj is associated with
 gridded digital elevation models, instances of GRIDobj can contain
 other gridded, single band, datasets such as flow accumulation grids,
 gradient grids etc.
+}
+\examples{
+
+data(srtm_bigtujunga30m_utm11)
+DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
+plot(DEM)
+
 }

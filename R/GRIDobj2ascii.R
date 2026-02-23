@@ -20,7 +20,6 @@
 #' @examples
 #'
 #' \dontrun{
-#'
 #' ## load example data set
 #' data(srtm_bigtujunga30m_utm11)
 #' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -32,7 +31,6 @@
 #' terra::writeRaster(grid = DEM,
 #'                    filename = "export/srtm_bigtujunga30m_utm11.txt",
 #'                    filetype = "AAIGrid")
-#'
 #' }
 #'
 #' @export GRIDobj2ascii

@@ -31,8 +31,6 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#'
 #' ## load example data set
 #' data(srtm_bigtujunga30m_utm11)
 #' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -50,8 +48,6 @@
 #'                   z = rnorm(100))
 #' D <- aggregate(grid2 = grid2, xyz = pts)
 #' plot(D)
-#'
-#' }
 #'
 #' @author Michael Dietze, Wolfgang Schwanghart
 #'

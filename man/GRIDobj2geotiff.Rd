@@ -30,7 +30,6 @@ Topotoolbox capabilities to R. It wraps the workhorse function
 \examples{
 
 \dontrun{
-
 ## load example data set
 data(srtm_bigtujunga30m_utm11)
 DEM <- GRIDobj(srtm_bigtujunga30m_utm11)

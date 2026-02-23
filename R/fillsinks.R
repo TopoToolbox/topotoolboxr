@@ -22,6 +22,12 @@
 #'
 #' Filled digital elevation model
 #'
+#' @examples
+#'
+#' data(srtm_bigtujunga30m_utm11)
+#' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
+#' DEM <- fillsinks(DEM)
+#'
 #' @export
 
 fillsinks <- function(dem,

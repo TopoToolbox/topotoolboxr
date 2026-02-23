@@ -11,8 +11,6 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#'
 #' ## load example data set
 #' data(srtm_bigtujunga30m_utm11)
 #' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -22,8 +20,6 @@
 #'
 #' ## plot image of DEM
 #' image(x = XYZ$X, y = XYZ$Y, z = t(XYZ$Z), col = terrain.colors(100))
-#'
-#' }
 #'
 #' @author Michael Dietze, Wolfgang Schwanghart
 #'

@@ -9,9 +9,8 @@
 #' @examples
 #' library(topotoolboxr)
 #' data(srtm_bigtujunga30m_utm11)
-#' dem <- rast(srtm_bigtujunga30m_utm11) # unwrap
+#' dem <- GRIDobj(srtm_bigtujunga30m_utm11)
 #' plot(dem)
 #'
 #' @source USGS SRTM
-#' @export
 "srtm_bigtujunga30m_utm11"

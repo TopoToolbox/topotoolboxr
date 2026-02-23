@@ -39,10 +39,9 @@ Large intermediate arrays are created during the initialization process,
 which could lead to issues when using very large DEMs.
 }
 \examples{
-\dontrun{
-DEM <- terra::rast(system.file("ex/elev.tif", package="terra"))
-DEM <- terra::project(DEM, "EPSG:32632", res=90.0)
+
+data(srtm_bigtujunga30m_utm11)
+DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
 FD <- FLOWobj(DEM)
-}
 
 }

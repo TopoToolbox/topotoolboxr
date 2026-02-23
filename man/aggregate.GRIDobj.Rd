@@ -41,8 +41,6 @@ each pixel is greater than one.
 }
 \examples{
 
-\dontrun{
-
 ## load example data set
 data(srtm_bigtujunga30m_utm11)
 DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -60,8 +58,6 @@ pts <- data.frame(x = runif(100, ext(DEM$raster)[1], ext(DEM$raster)[2]),
                   z = rnorm(100))
 D <- aggregate(grid2 = grid2, xyz = pts)
 plot(D)
-
-}
 
 }
 \author{

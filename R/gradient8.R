@@ -28,12 +28,11 @@
 #' @return 8-connected neighborhood gradient of a digital elevation model
 #'
 #' @examples
-#' \dontrun{
-#' DEM <- terra::rast(system.file("ex/elev.tif",package="terra"))
-#' DEM <- terra::project(DEM,"epsg:32632",res=90.0)
+#'
+#' data(srtm_bigtujunga30m_utm11)
+#' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
 #' g <- gradient8(DEM)
 #' plot(g)
-#' }
 #'
 #' @export
 

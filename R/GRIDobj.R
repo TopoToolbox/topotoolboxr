@@ -16,8 +16,8 @@
 #' DEM = GRIDobj("path/to/file") creates a GRIDobj by reading the file
 #' leveraging the \code{terra::rast()} function.
 #'
-#' DEM = GRIDobj(SpatRaster) creates a GRIDobj from a provided SpatRaster
-#' object.
+#' DEM = GRIDobj(SpatRaster) and GRIDobj(PackedSpatRaster) creates a GRIDobj
+#' from a provided SpatRaster object.
 #'
 #' DEM = GRIDobj(Z) creates a GRIDobj of a numeric matrix \code{Z} and a
 #' default resolution of \code{1} m.
@@ -82,6 +82,12 @@
 #' other gridded, single band, datasets such as flow accumulation grids,
 #' gradient grids etc.
 #'
+#' @examples
+#'
+#' data(srtm_bigtujunga30m_utm11)
+#' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
+#' plot(DEM)
+#'
 #' @export
 GRIDobj <- function(z, ...) {
   UseMethod("GRIDobj")
@@ -124,6 +130,24 @@ GRIDobj.character <- function(z, ...) {
 
 #' @exportS3Method
 GRIDobj.SpatRaster <- function(z, ...) {
+  # Input validation
+  if (!validateraster(z)) {
+    stop("The provided raster does not meet the requirements for use with
+         topotoolboxr.", call. = FALSE)
+  } else {
+    r <- z
+
+    # Create GRIDobj
+    structure(
+      list(raster = r),
+      class = "GRIDobj"
+    )
+  }
+}
+
+#' @exportS3Method
+GRIDobj.PackedSpatRaster <- function(z, ...) {
+  z <- terra::unwrap(z)
   # Input validation
   if (!validateraster(z)) {
     stop("The provided raster does not meet the requirements for use with

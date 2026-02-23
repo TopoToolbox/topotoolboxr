@@ -26,16 +26,12 @@ values and returns a logical value on the result.
 }
 \examples{
 
-\dontrun{
-
 ## load example data set
 data(srtm_bigtujunga30m_utm11)
 DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
 
 ## test if any FALSE values are contained
 any(DEM)
-
-}
 
 }
 \author{

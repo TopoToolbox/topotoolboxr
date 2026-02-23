@@ -16,6 +16,12 @@
 #'
 #' @return GRIDobj | SpatRaster (terra); Hillshade
 #'
+#' @examples
+#'
+#' data(srtm_bigtujunga30m_utm11)
+#' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
+#' HS <- hillshade(DEM)
+#'
 #' @export
 
 hillshade <- function(dem,

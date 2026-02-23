@@ -30,7 +30,6 @@ Topotoolbox capabilities to R. It wraps the workhorse function
 \examples{
 
 \dontrun{
-
 ## load example data set
 data(srtm_bigtujunga30m_utm11)
 DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -42,7 +41,6 @@ GRIDobj2ascii(grid = DEM, file = "export/srtm_bigtujunga30m_utm11.txt")
 terra::writeRaster(grid = DEM,
                    filename = "export/srtm_bigtujunga30m_utm11.txt",
                    filetype = "AAIGrid")
-
 }
 
 }

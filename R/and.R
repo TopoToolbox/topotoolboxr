@@ -12,8 +12,6 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#'
 #' ## Load example data set
 #' data(srtm_bigtujunga30m_utm11)
 #' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -25,8 +23,6 @@
 #' ## Perform operation on three data sets
 #' DEM_and <- and(DEM > 0, DEM - 500 > 0, DEM - 1000 > 0)
 #' plot(DEM_and)
-#'
-#' }
 #'
 #' @author Michael Dietze, Wolfgang Schwanghart
 #'

@@ -30,11 +30,10 @@ weights. The flow accumulation represents the amount of flow each cell
 receives from its upstream neighbors.
 }
 \examples{
-\dontrun{
-DEM <- terra::rast(system.file("ex/elev.tif",package="terra"))
-DEM <- terra::project(DEM,"EPSG:32632",res=90.0)
+
+data(srtm_bigtujunga30m_utm11)
+DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
 FD <- FLOWobj(DEM)
 FA <- flow_accumulation(FD)
-}
 
 }

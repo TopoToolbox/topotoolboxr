@@ -15,7 +15,6 @@
 #' @examples
 #'
 #' \dontrun{
-#'
 #' ## load example data set
 #' data(srtm_bigtujunga30m_utm11)
 #' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -41,7 +40,6 @@
 #'
 #' ## plot classified data set
 #' plot_GRIDobj(landforms)
-#'
 #' }
 #'
 #' @author Michael Dietze, Wolfgang Schwanghart

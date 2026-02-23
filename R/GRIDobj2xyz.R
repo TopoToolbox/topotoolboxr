@@ -10,8 +10,6 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#'
 #' ## load example data set
 #' data(srtm_bigtujunga30m_utm11)
 #' DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -21,8 +19,6 @@
 #'
 #' ## plot elevation profile of the first horizontal line of the DEM
 #' plot(x = XYZ$X[1:1197], y = XYZ$Z[1:1197])
-#'
-#' }
 #'
 #' @author Michael Dietze, Wolfgang Schwanghart
 #'

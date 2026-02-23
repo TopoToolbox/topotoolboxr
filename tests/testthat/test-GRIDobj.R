@@ -31,6 +31,9 @@ test_that("Checks if each use case creates a GRIDobj without errors and
             expect_true(
               inherits(GRIDobj(demr), "GRIDobj")
             )
+            data(srtm_bigtujunga30m_utm11)
+            dem <- GRIDobj(srtm_bigtujunga30m_utm11)
+            expect_true(inherits(dem, "GRIDobj"))
             # Case 4.1: GRIDobj(Z)
             expect_silent(
               dem <- GRIDobj(m)

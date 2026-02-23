@@ -19,8 +19,6 @@ and returns a data frame of tupels.
 }
 \examples{
 
-\dontrun{
-
 ## load example data set
 data(srtm_bigtujunga30m_utm11)
 DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
@@ -30,8 +28,6 @@ XYZ <- GRIDobj2xyz(grid = DEM)
 
 ## plot elevation profile of the first horizontal line of the DEM
 plot(x = XYZ$X[1:1197], y = XYZ$Z[1:1197])
-
-}
 
 }
 \author{

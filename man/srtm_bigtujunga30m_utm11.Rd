@@ -3,27 +3,26 @@
 \docType{data}
 \name{srtm_bigtujunga30m_utm11}
 \alias{srtm_bigtujunga30m_utm11}
-\title{Path to 30 m SRTM elevation data for Big Tujunga catchment}
+\title{30 m SRTM DEM for Big Tujunga catchment}
 \format{
-## `srtm_bigtujunga30m_utm11`
-A single length character string giving the full path to the GEOTIFF file:
-\describe{
-  \item{file}{Path to `srtm_bigtujunga30m_utm11.tif` (643 rows, 1197 columns, 1 layer, WGS 84 / UTM zone 11N EPSG:32611)}
+srtm_bigtujunga30m_utm11
+Packed SpatRaster list created by terra::wrap().
 }
+\source{
+USGS SRTM
 }
 \usage{
-data(srtm_bigtujunga30m_utm11)
+srtm_bigtujunga30m_utm11
 }
 \description{
-Character string containing the file path to the 30 m resolution Shuttle Radar 
-Topography Mission (SRTM) elevation data TIFF file for the Big Tujunga 
-catchment in California, located in `inst/extdata/`.
+Wrapped SpatRaster of 30 m SRTM elevation data (643 × 1197 cells, 1 layer,
+UTM 11N EPSG:32611) for Big Tujunga, California.
 }
 \examples{
-\dontrun{
-data(srtm_bigtujunga30m_utm11)
 library(topotoolboxr)
-GRIDobj(srtm_bigtujunga30m_utm11)
-}
+data(srtm_bigtujunga30m_utm11)
+dem <- GRIDobj(srtm_bigtujunga30m_utm11)
+plot(dem)
+
 }
 \keyword{datasets}
