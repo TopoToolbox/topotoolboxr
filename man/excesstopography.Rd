@@ -37,8 +37,18 @@ the DEM are accepted.
 }
 \examples{
 
+\dontrun{
+
 data(srtm_bigtujunga30m_utm11)
 DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
 DEMext <- excesstopography(DEM, tan(20*pi/180))
+
+data(srtm_bigtujunga30m_utm11)
+DEM <- GRIDobj(srtm_bigtujunga30m_utm11)
+R <- randomize(DEM,0,.5)
+E <- excesstopography(DEM,R)
+plot(hillshade(E),col = "Grays")
+
+}
 
 }
