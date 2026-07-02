@@ -24,12 +24,12 @@ jobs:
         run: |
           echo "PROJ_DATA=$(brew --prefix proj)/share/proj" >> "$GITHUB_ENV"
       - name: Set up R
-        uses: TopoToolbox/r-lib/actions/setup-r@main
+        uses: TopoToolbox/actions/r-lib/actions/setup-r@main
         with:
           r-version: release
       - name: Install dependencies
-        uses: TopoToolbox/r-lib/actions/setup-r-dependencies@main
+        uses: TopoToolbox/actions/r-lib/actions/setup-r-dependencies@main
         with:
           extra-packages: any::rcmdcheck
       - name: Build and check
-        uses: TopoToolbox/r-lib/actions/check-r-package@main
+        uses: TopoToolbox/actions/r-lib/actions/check-r-package@main
