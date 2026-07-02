@@ -13,7 +13,7 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: TopoToolbox/actions/checkout@main
         with:
           submodules: true
       - name: Install dependencies on macos
@@ -24,12 +24,12 @@ jobs:
         run: |
           echo "PROJ_DATA=$(brew --prefix proj)/share/proj" >> "$GITHUB_ENV"
       - name: Set up R
-        uses: r-lib/actions/setup-r@a51a8012b0aab7c32ef9d19bf54da93f3254335e
+        uses: TopoToolbox/actions/r-lib/actions/setup-r@main
         with:
           r-version: release
       - name: Install dependencies
-        uses: r-lib/actions/setup-r-dependencies@a51a8012b0aab7c32ef9d19bf54da93f3254335e
+        uses: TopoToolbox/actions/r-lib/actions/setup-r-dependencies@main
         with:
           extra-packages: any::rcmdcheck
       - name: Build and check
-        uses: r-lib/actions/check-r-package@a51a8012b0aab7c32ef9d19bf54da93f3254335e
+        uses: TopoToolbox/actions/r-lib/actions/check-r-package@main
